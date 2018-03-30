@@ -79,4 +79,8 @@ export class HomePage {
     goToMusicPlayer(music){
       this.navCtrl.push(MusicPlayerPage,{music:music});
     }
+
+    addToFavourites(music){
+      this.musicProvider.addToFavourites(music)
+    }
 }

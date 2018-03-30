@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {MediaPlugin,MediaObject} from '@ionic-native/media'
 
 /**
  * Generated class for the MusicPlayerPage page.
@@ -15,7 +16,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MusicPlayerPage {
   public music = {};
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  isMusicPaused = false;
+
+  private songMedia:MediaObject = null;
+  constructor(private mediaPlugin:MediaPlugin,public navCtrl: NavController, public navParams: NavParams) {
     this.music = this.navParams.get('music');
   }
 
@@ -24,16 +28,39 @@ export class MusicPlayerPage {
    
   }
 
+
+  ionViewwillLeave(){
+    this.stopMusic();
+  }
+
   stopMusic(){
+    if (this.songMedia != null){
+      this.songMedia.stop();
+      this.songMedia.release();
+      this.songMedia = null
+    }
 
   }
 
   playMusic(){
+   if (this.songMedia === null) {
+    this.songMedia = this.mediaPlugin.create(this.music['music_url']);
+    this.songMedia.play();
+   } else {
+     if (this.isMusicPaused === true){
+       this.songMedia.play();
+       this.isMusicPaused = false;
+     }
+   }
     
   }
 
   pauseMusic(){
-    
+    if (this.songMedia != null){
+      this.songMedia.pause()
+      this.isMusicPaused = true;
+    }
+   
   }
 
 }

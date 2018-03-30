@@ -15,6 +15,7 @@ const API:string = "https://orangeValleycaa.org/api/music";
 @Injectable()
 export class MusicProvider {
 
+  public favouritesSongs = [];
   constructor(public http: Http) {
     console.log('Hello MusicProvider Provider');
   }
@@ -28,6 +29,22 @@ getOneSong(){
   let oneSongUrl = API;
   return this.http.get(oneSongUrl)
   .map(respone=>respone.json())
-}  
+} 
+
+
+getFavourites(){
+  return this.favouritesSongs;
+}
+
+addToFavourites(song){
+let isSongAdded = this.favouritesSongs.findIndex((favouriteSong) => {
+return song.id === favouriteSong.id
+});
+
+if (isSongAdded === -1){
+  this.favouritesSongs.push(song);
+}
+}
+
 
 }

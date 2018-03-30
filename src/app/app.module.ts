@@ -10,6 +10,7 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SocialSharing } from '@ionic-native/social-sharing'
+import { MediaPlugin } from '@ionic-native/media'
 import { MusicProvider } from '../providers/music/music';
 import { MusicPlayerPage } from '../pages/music-player/music-player';
 
@@ -36,6 +37,7 @@ import { MusicPlayerPage } from '../pages/music-player/music-player';
     StatusBar,
     SplashScreen,
     SocialSharing,
+    MediaPlugin,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MusicProvider,
   ]
