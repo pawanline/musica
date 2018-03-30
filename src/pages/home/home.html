@@ -15,6 +15,9 @@
   </p>
 
   <button ion-button secondary menuToggle>Toggle Menu</button> -->
+  <ion-refresher (ionRefresh)="addOneSong($event)">
+    <ion-refresher-content ></ion-refresher-content>
+  </ion-refresher>
   <ion-card *ngFor="let music of allMusic">
     <img [src]="music.image">
     <ion-card-content>
