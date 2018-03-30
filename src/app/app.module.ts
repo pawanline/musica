@@ -9,6 +9,7 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { SocialSharing } from '@ionic-native/social-sharing'
 import { MusicProvider } from '../providers/music/music';
 
 @NgModule({
@@ -31,8 +32,9 @@ import { MusicProvider } from '../providers/music/music';
   providers: [
     StatusBar,
     SplashScreen,
+    SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MusicProvider
+    MusicProvider,
   ]
 })
 export class AppModule {}
