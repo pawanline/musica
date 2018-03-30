@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>All Music</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -24,7 +24,9 @@
       <ion-card-title>{{music.name}}</ion-card-title>
       <ion-item>
         <button ion-button item-left (click)="shareSong(music)">Share</button>
-        <button ion-button item-right>Listen</button>
+        <button (click)="goToMusicPlayer(music)"ion-button item-right>
+          Listen
+        </button>
       </ion-item>
     </ion-card-content>
 
